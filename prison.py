@@ -6,20 +6,20 @@ prisoners = [
     {"name" : "Sera", "Age" : 34, "level_d" : 3, "freed" : True},
 ];
 try:
-    num_function = int(input("print a 1 to sorted by age, 2 to sorted by freed, 3 to sorted by level_danger"));
+    num_function = int(input("1 to sorted by age,\n2 to sorted by freed,\n3 to sorted by level_danger\n"));
     if 3 > num_function < 0:
-        raise ValueError()
+        raise ValueError();
 except ValueError: 
-    print ("You dont print a 1, 2 or 3!");
+    print("You don't print 1,2,3");
 
-def sort_by_age (prisoners):
-    def get_Age (prisoner):
-        return (prisoner["Age"])
-    prisoners.sort (key=get_Age)
+#funhen
+def sort_by_age(prisoners):
+    prisoners.sort(key=lambda prisoner: prisoner["Age"]);
     for p in prisoners:
-        print (p);
+        print(p["name"],"Age",p["Age"]);
 
 def sort_by_freed (prisoners):
+    prisoners.sort(key=lambda prisoner: prisoner["freed"]);
     for p in prisoners:
         if p["freed"] == False:
             print (p["name"], "Not escaped");
@@ -27,16 +27,18 @@ def sort_by_freed (prisoners):
             print (p["name"], "Escaped");
 
 def sort_by_danger (prisoners):
-    def get_danger (prisoner):
-        return (prisoner["level_d"])
-    prisoners.sort (key=get_danger)
+    prisoners.sort(key=lambda prisoner: prisoner["level_d"]);
     for p in prisoners:
-        print (p);
-
-match num_function:
-    case 1:
-            sort_by_age (prisoners);
-    case 2:
-            sort_by_freed (prisoners);
-    case 3:
-            sort_by_danger (prisoners);
+        print (p["name"],"level_d",p["level_d"]);
+try:   
+    match num_function:
+        case 1:
+                sort_by_age (prisoners);
+        case 2:
+                sort_by_freed (prisoners);
+        case 3:
+                sort_by_danger (prisoners);
+except NameError:
+     print ();
+ 
+        
